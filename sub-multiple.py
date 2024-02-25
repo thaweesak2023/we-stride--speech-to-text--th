@@ -4,10 +4,22 @@ from moviepy.editor import VideoFileClip
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
 import speech_recognition as sr
+import os
 
 
-dir_out = 'chunks'
+dir_chunk = 'chunks'
+dir_out = 'out-txt-multiple'
 dir_temp = 'temps'
+
+
+if not os.path.exists(dir_chunk):
+    os.makedirs(dir_chunk, exist_ok=True)
+
+if not os.path.exists(dir_out):
+    os.makedirs(dir_out, exist_ok=True)
+
+if not os.path.exists(dir_temp):
+    os.makedirs(dir_temp, exist_ok=True)
 
 
 def video_to_subtitles(video_path, language='th-TH', min_silence_len=500, silence_thresh=-40):
@@ -49,7 +61,8 @@ def video_to_subtitles(video_path, language='th-TH', min_silence_len=500, silenc
         start_time += chunk_duration
 
     # Generate SRT file
-    with open("output_subtitles.srt", "w") as f:
+    pathout = f'{dir_out}/subtitles.srt'
+    with open(pathout, "w") as f:
         for i, subtitle in enumerate(subtitles, start=1):
             start = format_srt_time(subtitle['start'])
             end = format_srt_time(subtitle['end'])

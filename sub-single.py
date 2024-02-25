@@ -2,6 +2,11 @@
 
 import speech_recognition as sr
 from moviepy.editor import VideoFileClip
+import os
+
+dir_out = 'out-txt-single'
+if not os.path.exists(dir_out):
+    os.makedirs(dir_out, exist_ok=True)
 
 
 def video_to_text(video_path, audio_path='extracted_audio.wav', language="th-TH"):
@@ -34,7 +39,8 @@ def video_to_text(video_path, audio_path='extracted_audio.wav', language="th-TH"
                 f"Could not request results from Google Speech Recognition service; {e}")
 
     # Save the transcribed text as subtitles
-    with open("subtitles.txt", "w") as f:  # More generic filename
+    pathfile = f'{dir_out}/subtitles.txt'
+    with open(pathfile, "w") as f:  # More generic filename
         f.write(text)
 
 
