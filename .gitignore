@@ -1,0 +1,8 @@
+temps/
+chunks/
+**.zip
+**/.DS_Store
+**.wav
+**.mp4
+
+!Introducing_HTML_Tables.mp4
