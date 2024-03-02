@@ -92,9 +92,10 @@ gs_in_list = [
     'gs://gg-tts-v202402/in-tts-audio/yt-THE--STANDARD.wav',
     # '...',
 ]
+gs_project_id = 'your-project-id'
 
 transcribe_batch_multiple_files_v2(
-    'your-project-id',
+    gs_project_id,
     gs_in_list,
     gs_out,
 )
