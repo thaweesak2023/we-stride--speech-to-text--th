@@ -58,6 +58,39 @@ out-txt-long-audio/out-tts-v1_yt-THE--STANDARD_transcript_65e8854d-0000-278e-b1f
 
 ---
 
+# ข้อสังเกตุ 
+
+ข้อความที่ได้ยังไม่ถูกต้องนัก
+
+แต่มี model ใหม่ของ Google ที่ยังไม่ได้ลอง Chirp and USM
+```
+# create recognizer request
+recognizer_request = cloud_speech.CreateRecognizerRequest(
+        parent="projects/your-project-id/locations/your-region",
+        recognizer_id=recognizer_id,
+        recognizer=cloud_speech.Recognizer(
+            language_codes=[language_code],
+            model="chirp", #THIS
+        ),
+      )
+```
+
+ลองเข้าไปดูบทความนี้ [How to Use Chirp and USM](https://link-url-here.org)
+---
+
+# งานวิจัยที่เกี่ยวข้องและน่าสนใจ
+
+Conformer
+- [docs](https://arxiv.org/abs/2005.08100)
+- [docs-translate](./Conformer.md)
+
+Chirp and USM
+- [Video Present](https://www.youtube.com/watch?v=xT348FrrFZ0)
+- [docs](https://arxiv.org/pdf/2303.01037.pdf)
+- [How to Use: Chirp and USM](https://medium.com/google-cloud/getting-started-with-chirp-the-googles-universal-speech-model-usm-on-vertex-ai-f54edaf4da93)
+
+---
+
 # SOME IDEAS
 
 ## Search ข้อความจากวิดีโอ ลดเวลาการหา
